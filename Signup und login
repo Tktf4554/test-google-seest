@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form test</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="pt-4"></div>
+  <div class="container">
+    <div>
+      <h3 class="text-center">Signup and Login</h3>
+    </div>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" name="options" id="signup" checked> Sign Up
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="login"> Login
+      </label>
+    </div>
+    <form method="post" autocomplete="off" name="signup-form" id="signup-form">
+      <!-- เนื้อหาของฟอร์ม SignUp ที่คุณต้องการเพิ่ม -->
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text" class="form-control"  placeholder="Username" name="ชื่อ-สกุล">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control"  placeholder="Name" name="ชื่อเล่น">
+      </div>
+      <div class="form-group">
+        <label for="name">Telefonnummer</label>
+        <input type="text" class="form-control"  placeholder="Telefonnummer" name="เบอร์โทร">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="อีเมล" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+      </div>
+      <button type="submit" name="submit" value="Send message" class="btn btn-primary">Sign Up</button>
+    </form>
+    <form method="post" autocomplete="off" name="login-form" id="login-form" style="display: none;">
+      <!-- เนื้อหาของฟอร์ม Login ที่คุณต้องการเพิ่ม -->
+      <div class="form-group">
+        <label for="loginEmail">Username</label>
+        <input type="email" name="LoginUsername" class="form-control" id="LoginUsername"  placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="loginEmail">Email</label>
+        <input type="email" name="loginEmail" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" name="loginPassword" class="form-control" id="loginPassword" placeholder="Password">
+      </div>
+      <button type="submit" name="loginSubmit" value="Login" class="btn btn-secondary">Login</button>
+    </form>
+    <div id="demo"></div>
+  </div>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxprbLNUnBLviEGc3HR-_RQalNrOPMg1XwdKH8bUOXpIBRAG4NJFe3_V2dXFSOjFpJS1g/exec'
+    const form = document.forms['signup-form']
+    
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const username = form.elements['ชื่อ-สกุล'].value;
+      const name = form.elements['ชื่อเล่น'].value;
+      const telefonnummer = form.elements['เบอร์โทร'].value;
+      const email = form.elements['อีเมล'].value;
+
+      if (isValidData(username, name, telefonnummer, email)) {
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(response => {
+            document.getElementById("demo").innerHTML = "<div class='alert alert-success' role='alert'><b>ถูก</b></div>";
+            form.reset();
+          })
+          .catch(error => console.error('Error!', error.message))
+      } else {
+        document.getElementById("demo").innerHTML = "<div class='alert alert-danger' role='alert'><b>ผิด</b></div>";
+      }
+    });
+
+    // ฟังก์ชันตรวจสอบข้อมูล
+    function isValidData(username, name, telefonnummer, email) {
+      // ทำการตรวจสอบข้อมูลตามเงื่อนไขที่คุณต้องการ
+      // ในที่นี้คุณสามารถตรวจสอบว่าข้อมูลไม่ว่างหรืออื่น ๆ
+      // และให้คืนค่า true ถ้าข้อมูลถูกต้อง หรือ false ถ้าไม่ถูกต้อง
+      if (username && name && telefonnummer && email) {
+        return true;
+      }
+      return false;
+    }
+
+    document.getElementById('login').addEventListener('click', function () {
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    });
+
+    document.getElementById('signup').addEventListener('click', function () {
+      document.getElementById('signup-form').style.display = 'block';
+      document.getElementById('login-form').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
