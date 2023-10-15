@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="text1">
+  <h2>meine Website </h2>
+  <p>
+     können sie kaufen 
+  </p>
+
+  </div>
+  
+
+  
+    <div class="container">
+        <div class="box" id="box1">
+            <h1>Kaufen 1</h1>
+            <p> 1</p>
+        </div>
+        <div class="box" id="box2">
+            <h1>Kaufen 2</h1>
+            <p>2</p>
+        </div>
+
+      <div class="box" id="box2">
+            <h1>Kaufen 3</h1>
+            <p> 2</p>
+      </div>
+
+      <div class="box" id="box2">
+            <h1>Kaufen 4</h1>
+            <p>Kaufen 4</p>
+      </div>
+        <!-- เพิ่มกล่องเพิ่มเติมตามต้องการ -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
