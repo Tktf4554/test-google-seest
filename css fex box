@@ -1,0 +1,36 @@
+/* CSS สำหรับขนาดจอใหญ่ (เรียงแนวนอน) */
+.container {
+    display: flex;
+    flex-direction: row; /* จัดกล่องแบบแนวนอน */
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #e0e0e0;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 10%;
+  align-items: center;
+  margin-top: 10%;
+  
+  
+    
+    
+    
+}
+
+.text1{
+  margin-top: 30%;
+  margin-left: 30%;
+  
+  
+  
+}
+
+h1{
+  margin: 0;
+  
+  
+}
